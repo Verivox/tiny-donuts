@@ -3,6 +3,10 @@
 A Small Library for creating donut charts.
 
 
+## Very small
+The Library has a minified Size of 6.62 KiB.
+
+
 ## Simple Usage
 
  *** Labels are currently ignored ***
