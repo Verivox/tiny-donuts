@@ -5,6 +5,7 @@
   "main": "dist/simple_donuts.min.js",
   "types": "dist/src/index.d.ts",
   "scripts": {
+    "build": "webpack",
     "lint": "tslint -p tsconfig.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,20 +14,26 @@
     "url": "git@gitlab.kumbier.it:verivox/SimpleDonuts.git"
   },
   "keywords": [
-    "Charts",
-    "Donuts",
-    "Donut",
     "Chart",
+    "Charts",
+    "Doughnut",
+    "Doughnuts",
+    "Donut",
+    "Donuts",
     "svg",
     "small"
   ],
   "author": "Kim Almasan",
-  "license": "ISC",
-  "dependencies": {
-  },
+  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
-    "typescript": "^3.0.1",
+    "browser-sync": "^2.24.6",
+    "browser-sync-webpack-plugin": "^2.2.2",
     "ts-loader": "^4.4.2",
-    "tslint": "^5.11.0"
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   }
 }
