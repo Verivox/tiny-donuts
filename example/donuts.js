@@ -1,4 +1,4 @@
-const { Donut, DonutData, DonutSegment } = window.SimpleDonuts
+const { Donut, DonutData, Segment } = window.SimpleDonuts
 const parent = document.getElementById('donut_parent')
 
 const plainData = [{
@@ -15,5 +15,5 @@ const plainData = [{
         label: 'third',
     }]
 
-const donut = new Donut({ data: plainData })
+const donut = new Donut({ entries: plainData, strokeWidth: 10 })
 parent.appendChild(donut.get())

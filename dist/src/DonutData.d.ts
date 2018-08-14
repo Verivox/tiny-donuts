@@ -1,4 +1,4 @@
-import { DonutSegment, IDonutSegmentParameter } from './DonutSegment';
+import { IDonutSegmentParameter, Segment } from './Segment';
 export interface IDataCircleParameter {
     strokeWidth: number;
     center: {
@@ -9,7 +9,7 @@ export interface IDataCircleParameter {
 export declare class DonutData {
     private entries;
     constructor(plainData: IDonutSegmentParameter[]);
-    add(entry: DonutSegment | DonutSegment[]): void;
+    add(entry: Segment | Segment[]): void;
     getCircles({ strokeWidth, center }: IDataCircleParameter): SVGCircleElement[];
     private checkValues;
 }

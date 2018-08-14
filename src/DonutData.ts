@@ -1,6 +1,6 @@
-import { DonutBackground } from './DonutBackground'
-import { DonutEmptyRing } from './DonutEmptyRing'
-import { DonutSegment, IDonutSegmentParameter } from './DonutSegment'
+import { Background } from './Background'
+import { EmptyRing } from './EmptyRing'
+import { IDonutSegmentParameter, Segment } from './Segment'
 
 export interface IDataCircleParameter {
     strokeWidth: number
@@ -11,22 +11,22 @@ export interface IDataCircleParameter {
 }
 
 export class DonutData {
-    private entries: DonutSegment[] = [
-        new DonutBackground(),
-        new DonutEmptyRing(),
+    private entries: Segment[] = [
+        new Background(),
+        new EmptyRing(),
     ]
 
     constructor(plainData: IDonutSegmentParameter[]) {
-        this.add(plainData.map(plain => new DonutSegment(plain)))
+        this.add(plainData.map(plain => new Segment(plain)))
     }
 
     /**
      * Add Entry to DonutData
      *
-     * @param {(DonutSegment | DonutSegment[])} entry
+     * @param {(Segment | Segment[])} entry
      * @memberof DonutData
      */
-    public add(entry: DonutSegment | DonutSegment[]) {
+    public add(entry: Segment | Segment[]) {
         const extended = this.entries.concat(entry)
         this.checkValues(extended)
         this.entries = extended
@@ -47,7 +47,7 @@ export class DonutData {
         return segments
     }
 
-    private checkValues(list: DonutSegment[]) {
+    private checkValues(list: Segment[]) {
         const result = list.filter(itm => !itm.color).map(itm => itm.value).reduce((prev, curr) => prev + curr)
         if (result > 1) {
             throw Error('The extend entries would be higher than 1.')

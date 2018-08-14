@@ -28,7 +28,7 @@ const plainData = [{
         label: 'third',
     }]
 
-const donut = new Donut(plainData)
+const donut = new Donut({ entries: plainData })
 const svgElement = donut.get()
 
 document.getElmentById('parent_element').appendChild(svgElement)

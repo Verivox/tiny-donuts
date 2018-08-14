@@ -15,7 +15,7 @@ export interface ISegmentParameter {
     }
 }
 
-export class DonutSegment {
+export class Segment {
     public color: string
     public value: number
     public label: string

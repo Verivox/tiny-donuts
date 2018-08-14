@@ -1,8 +1,8 @@
 import { DonutData } from './DonutData'
-import { IDonutSegmentParameter } from './DonutSegment'
+import { IDonutSegmentParameter } from './Segment'
 
 export interface IDonutOptions {
-    data: DonutData | IDonutSegmentParameter[]
+    entries: DonutData | IDonutSegmentParameter[]
     width?: string
     height?: string
     strokeWidth?: number
@@ -22,18 +22,18 @@ export class Donut {
     }
 
     constructor({
-        data,
+        entries,
         width = '100%',
         height = '100%',
         strokeWidth = 3,
         center = { x: 50, y: 50 },
     }: IDonutOptions) {
         const ns = 'http://www.w3.org/2000/svg'
-        if (!(data instanceof DonutData)) {
-            data = new DonutData(data)
+        if (!(entries instanceof DonutData)) {
+            entries = new DonutData(entries)
         }
 
-        this.data = data
+        this.data = entries
         this.svg = document.createElementNS(ns, 'svg')
         this.svg.style.height = height
         this.svg.style.width = width
