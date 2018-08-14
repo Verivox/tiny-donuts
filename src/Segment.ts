@@ -7,6 +7,7 @@ export interface IDonutSegmentParameter {
 
 export interface ISegmentParameter {
     radius: number
+    circumference: number
     strokeWidth: number
     previousLength: number
     center: {
@@ -32,8 +33,10 @@ export class Segment {
         this.fill = fill
     }
 
-    public getSegment({ radius, strokeWidth, center, previousLength }: ISegmentParameter) {
-        const offset = 100 - (previousLength * 100) + 25
+    public getSegment({ radius, strokeWidth, center, previousLength, circumference }: ISegmentParameter) {
+        const base = circumference / 100
+        const offset = circumference - (base * (previousLength * 100)) + (circumference / 4)
+        const percentage = base * (this.value * 100)
         const ns = 'http://www.w3.org/2000/svg'
         const circle = document.createElementNS(ns, 'circle')
         circle.setAttributeNS('', 'r', radius.toString())
@@ -44,7 +47,7 @@ export class Segment {
             circle.setAttributeNS('', 'stroke', this.color)
             circle.setAttributeNS('', 'stroke-width', strokeWidth.toString())
             circle.setAttributeNS('', 'stroke-dashoffset', offset.toString())
-            circle.setAttributeNS('', 'stroke-dasharray', `${this.value * 100} ${(1 - this.value) * 100}`)
+            circle.setAttributeNS('', 'stroke-dasharray', `${percentage} ${(circumference - percentage)}`)
         }
         return circle
     }

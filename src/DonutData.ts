@@ -34,12 +34,15 @@ export class DonutData {
 
     public getCircles({ strokeWidth, center }: IDataCircleParameter) {
         let filled = 0
+        const radius = (center.x / 2) - (strokeWidth / 2)
+        const circumference = 2 * Math.PI * radius
         const segments: SVGCircleElement[] = []
         for (const entry of this.entries) {
             segments.push(entry.getSegment({
                 center,
+                circumference,
                 previousLength: filled,
-                radius: 100 / (Math.PI * 2),
+                radius,
                 strokeWidth,
             }))
             filled += entry.value
