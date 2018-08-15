@@ -1,14 +1,36 @@
 import { expect } from 'chai';
 
-interface IFoo {
-    value: number,
+
+interface ISegmentOptions {
     color?: string
+    length: number
+    radius: number
+    size: number
+    start: number
+    thickness?: number
+}
+
+interface ISegment {
+    constructor(ISegmentOptions)
+    getSVGElement():SVGCircleElement
+}
+
+interface IValues {
+    color?: string
+    value: number
 }
 
 interface IDiagramOptions {
-    segments: IFoo[],
+    segments: IValues[]
     spacing: number
+    thickness?: number
 }
+
+interface IDiagram {
+    constructor(IDiagramOptions)
+    getSVGElement():SVGSVGElement
+}
+
 
 function correctSegmentsForSpacing({ segments, spacing }: IDiagramOptions) {
     const totalLengthWithoutSpacing = 1 - spacing * segments.length
@@ -19,30 +41,12 @@ function correctSegmentsForSpacing({ segments, spacing }: IDiagramOptions) {
 }
 
 
-interface ISegmentOptions {
-    start: number,
-    length: number,
-    color: string
-}
-
-interface ISegment {
-    constructor(ISegmentOptions)
-    draw()
-}
-
-interface IDiagram {
-    constructor(IDiagramOptions)
-    getSVGElement()
-}
-
-
-
 
 describe('Segments', () => {
     it('One segment in, no spacing, returns equal lengths', () => {
         const input = {
             spacing: 0,
-            segments: [ {
+            segments: [{
                 value: 1
             }]
         }
