@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack",
     "lint": "tslint -p tsconfig.json",
-    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha --require ts-node/register specs/**/*spec.ts"
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha --require ts-node/register specs/**/*spec.ts",
+    "test:watch": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha --watch --watch-extensions=ts --require ts-node/register specs/**/*spec.ts"
   },
   "repository": {
     "type": "git",
