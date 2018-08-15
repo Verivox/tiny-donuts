@@ -16,9 +16,13 @@ const plainData = [
     },
     {
         color: 'green',
-        value: 0.25,
+        value: 0.1,
+    },
+    {
+        color: 'orange',
+        value: 0.15,
     }
 ]
 
-const donut = new Donut({ entries: plainData, thickness: 3 })
-parent.appendChild(donut.get())
+const donut = new Donut({ entries: plainData, thickness: 10, spacing: 0.1 })
+parent.appendChild(donut.getSVGElement())

@@ -1,56 +1,64 @@
-import { DonutData } from './DonutData'
-import { IDonutSegmentParameter } from './Segment'
+import { IDonutSegmentParameter, Segment } from './Segment'
 
 export interface IDonutOptions {
-    entries: DonutData | IDonutSegmentParameter[]
-    segmentSpace?: number
-    width?: string
-    height?: string
-    thickness?: number
+    entries: IValue[]
+    spacing?: number
+    thickness?: number | 'pie'
+}
+
+export interface IValue {
+    color: string
+    value: number
 }
 
 export class Donut {
-    private data: DonutData
-    private svg: SVGSVGElement
+    private entries: IValue[]
     private thickness: number
-    private segmentSpace: number
+    private spacing: number
     private size = 100
 
     constructor({
         entries,
-        width = '100%',
-        height = '100%',
         thickness = 3,
-        segmentSpace = 3,
+        spacing = 0.005,
     }: IDonutOptions) {
-        const ns = 'http://www.w3.org/2000/svg'
-        if (!(entries instanceof DonutData)) {
-            entries = new DonutData(entries)
-        }
 
-        this.data = entries
-        this.svg = document.createElementNS(ns, 'svg')
-        this.svg.style.height = height
-        this.svg.style.width = width
-        this.svg.setAttributeNS('', 'viewBox', `0 0 ${this.size} ${this.size}`)
-        this.thickness = thickness
-        this.segmentSpace = segmentSpace
-        this.attachSegments()
+        this.spacing = spacing
+        this.entries = entries
+        this.thickness = thickness === 'pie' ? this.size / 2 : thickness
     }
 
-    public get() {
-        return this.svg
+    public getSVGElement() {
+        const segments = this.constructSegments()
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        svg.setAttributeNS('', 'viewBox', `0 0 ${this.size} ${this.size}`)
+
+        segments.forEach(segment => svg.appendChild(segment.getSVGElement()))
+        return svg
     }
 
-    private attachSegments() {
-        const segments = this.data.getCircles({
-            segmentSpace: this.segmentSpace,
-            size: this.size,
-            thickness: this.thickness,
-        })
+    private constructSegments() {
+        const segmentsWithSpacing = this.correctSegmentsForSpacing({ segments: this.entries, spacing: this.spacing })
+        let start = 0
+        const segments = []
+        for (const entry of segmentsWithSpacing) {
+            segments.push(new Segment({
+                color: entry.color,
+                length: entry.value,
+                size: this.size,
+                start,
+                thickness: this.thickness,
+            }))
 
-        for (const segment of segments) {
-            this.svg.appendChild(segment)
+            start += entry.value + this.spacing
         }
+        return segments
+    }
+
+    private correctSegmentsForSpacing({ segments, spacing }: { segments: IValue[], spacing: number }) {
+        const totalLengthWithoutSpacing = 1 - spacing * segments.length
+        const result = segments.map(entry => ({ ...entry, value: entry.value * totalLengthWithoutSpacing }))
+            .map(entry => ({ ...entry, value: parseFloat(entry.value.toFixed(4)) }))
+        return result
     }
 }

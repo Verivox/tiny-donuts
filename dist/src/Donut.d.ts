@@ -1,19 +1,19 @@
-import { DonutData } from './DonutData';
-import { IDonutSegmentParameter } from './Segment';
 export interface IDonutOptions {
-    entries: DonutData | IDonutSegmentParameter[];
-    segmentSpace?: number;
-    width?: string;
-    height?: string;
-    thickness?: number;
+    entries: IValue[];
+    spacing?: number;
+    thickness?: number | 'pie';
+}
+export interface IValue {
+    color: string;
+    value: number;
 }
 export declare class Donut {
-    private data;
-    private svg;
+    private entries;
     private thickness;
-    private segmentSpace;
+    private spacing;
     private size;
-    constructor({ entries, width, height, thickness, segmentSpace, }: IDonutOptions);
-    get(): SVGSVGElement;
-    private attachSegments;
+    constructor({ entries, thickness, spacing, }: IDonutOptions);
+    getSVGElement(): SVGSVGElement;
+    private constructSegments;
+    private correctSegmentsForSpacing;
 }

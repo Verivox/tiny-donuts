@@ -1,7 +1,9 @@
 export interface IDonutSegmentParameter {
     color: string;
-    value: number;
-    backgroundColor?: string;
+    length: number;
+    size: number;
+    start: number;
+    thickness: number;
 }
 export interface ISegmentParameter {
     radius: number;
@@ -12,8 +14,11 @@ export interface ISegmentParameter {
 }
 export declare class Segment {
     color: string;
-    value: number;
+    length: number;
+    size: number;
+    start: number;
+    thickness: number;
     backgroundColor: string;
-    constructor({ color, value, backgroundColor }: IDonutSegmentParameter);
-    getSegment({ radius, thickness, size, offsetInPercent, circumference }: ISegmentParameter): SVGCircleElement;
+    constructor({ color, length, size, start, thickness }: IDonutSegmentParameter);
+    getSVGElement(): SVGCircleElement;
 }
