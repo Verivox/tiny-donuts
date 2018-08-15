@@ -9,7 +9,7 @@ export interface IEmptyRingParameter {
 export class EmptyRing extends Segment {
     constructor() {
         super({
-            color: '#d2d3d4',
+            color: 'white',
             value: 1,
         })
     }

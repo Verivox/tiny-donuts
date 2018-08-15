@@ -32,6 +32,7 @@ export class DonutData {
 
     public getCircles({ thickness, size, segmentSpace }: IDataCircleParameter) {
         let offsetInPercent = 0
+        const whiteSpace = segmentSpace * (this.entries.length - 2)
         const radius = (size / 2) - (thickness / 2)
         const circumference = 2 * Math.PI * radius
 
