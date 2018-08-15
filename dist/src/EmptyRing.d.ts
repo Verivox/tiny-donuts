@@ -1,13 +1,10 @@
 import { Segment } from './Segment';
 export interface IEmptyRingParameter {
     radius: number;
-    strokeWidth: number;
-    center: {
-        x: number;
-        y: number;
-    };
+    thickness: number;
+    size: number;
 }
 export declare class EmptyRing extends Segment {
     constructor();
-    getSegment({ radius, center, strokeWidth }: IEmptyRingParameter): SVGCircleElement;
+    getSegment({ radius, size, thickness }: IEmptyRingParameter): SVGCircleElement;
 }

@@ -3,30 +3,25 @@ import { IDonutSegmentParameter } from './Segment'
 
 export interface IDonutOptions {
     entries: DonutData | IDonutSegmentParameter[]
+    segmentSpace?: number
     width?: string
     height?: string
-    strokeWidth?: number
-    center?: {
-        x: number,
-        y: number,
-    }
+    thickness?: number
 }
 
 export class Donut {
     private data: DonutData
     private svg: SVGSVGElement
-    private strokeWidth: number
-    private center: {
-        x: number,
-        y: number,
-    }
+    private thickness: number
+    private segmentSpace: number
+    private size = 100
 
     constructor({
         entries,
         width = '100%',
         height = '100%',
-        strokeWidth = 3,
-        center = { x: 50, y: 50 },
+        thickness = 3,
+        segmentSpace = 3,
     }: IDonutOptions) {
         const ns = 'http://www.w3.org/2000/svg'
         if (!(entries instanceof DonutData)) {
@@ -37,9 +32,9 @@ export class Donut {
         this.svg = document.createElementNS(ns, 'svg')
         this.svg.style.height = height
         this.svg.style.width = width
-        this.center = center
-        this.svg.setAttributeNS('', 'viewBox', `0 0 ${center.x} ${center.y}`)
-        this.strokeWidth = strokeWidth
+        this.svg.setAttributeNS('', 'viewBox', `0 0 ${this.size} ${this.size}`)
+        this.thickness = thickness
+        this.segmentSpace = segmentSpace
         this.attachSegments()
     }
 
@@ -49,8 +44,9 @@ export class Donut {
 
     private attachSegments() {
         const segments = this.data.getCircles({
-            center: this.center,
-            strokeWidth: this.strokeWidth,
+            segmentSpace: this.segmentSpace,
+            size: this.size,
+            thickness: this.thickness,
         })
 
         for (const segment of segments) {

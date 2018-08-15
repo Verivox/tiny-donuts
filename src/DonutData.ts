@@ -3,11 +3,9 @@ import { EmptyRing } from './EmptyRing'
 import { IDonutSegmentParameter, Segment } from './Segment'
 
 export interface IDataCircleParameter {
-    strokeWidth: number
-    center: {
-        x: number,
-        y: number,
-    }
+    thickness: number
+    size: number
+    segmentSpace: number
 }
 
 export class DonutData {
@@ -32,20 +30,22 @@ export class DonutData {
         this.entries = extended
     }
 
-    public getCircles({ strokeWidth, center }: IDataCircleParameter) {
-        let filled = 0
-        const radius = (center.x / 2) - (strokeWidth / 2)
+    public getCircles({ thickness, size, segmentSpace }: IDataCircleParameter) {
+        let offsetInPercent = 0
+        const radius = (size / 2) - (thickness / 2)
         const circumference = 2 * Math.PI * radius
+
         const segments: SVGCircleElement[] = []
         for (const entry of this.entries) {
             segments.push(entry.getSegment({
-                center,
                 circumference,
-                previousLength: filled,
+                offsetInPercent,
                 radius,
-                strokeWidth,
+                size,
+                thickness,
             }))
-            filled += entry.value
+
+            offsetInPercent += entry.value
         }
         return segments
     }

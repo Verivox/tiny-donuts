@@ -2,20 +2,18 @@ import { DonutData } from './DonutData';
 import { IDonutSegmentParameter } from './Segment';
 export interface IDonutOptions {
     entries: DonutData | IDonutSegmentParameter[];
+    segmentSpace?: number;
     width?: string;
     height?: string;
-    strokeWidth?: number;
-    center?: {
-        x: number;
-        y: number;
-    };
+    thickness?: number;
 }
 export declare class Donut {
     private data;
     private svg;
-    private strokeWidth;
-    private center;
-    constructor({ entries, width, height, strokeWidth, center, }: IDonutOptions);
+    private thickness;
+    private segmentSpace;
+    private size;
+    constructor({ entries, width, height, thickness, segmentSpace, }: IDonutOptions);
     get(): SVGSVGElement;
     private attachSegments;
 }

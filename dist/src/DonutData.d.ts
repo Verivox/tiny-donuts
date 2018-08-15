@@ -1,15 +1,13 @@
 import { IDonutSegmentParameter, Segment } from './Segment';
 export interface IDataCircleParameter {
-    strokeWidth: number;
-    center: {
-        x: number;
-        y: number;
-    };
+    thickness: number;
+    size: number;
+    segmentSpace: number;
 }
 export declare class DonutData {
     private entries;
     constructor(plainData: IDonutSegmentParameter[]);
     add(entry: Segment | Segment[]): void;
-    getCircles({ strokeWidth, center }: IDataCircleParameter): SVGCircleElement[];
+    getCircles({ thickness, size, segmentSpace }: IDataCircleParameter): SVGCircleElement[];
     private checkValues;
 }
