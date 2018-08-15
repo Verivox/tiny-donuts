@@ -7,7 +7,7 @@
   "scripts": {
     "build": "webpack",
     "lint": "tslint -p tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha --require ts-node/register specs/**/*spec.ts"
   },
   "repository": {
     "type": "git",
@@ -27,9 +27,14 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
     "browser-sync": "^2.24.6",
     "browser-sync-webpack-plugin": "^2.2.2",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
     "ts-loader": "^4.4.2",
+    "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1",
     "webpack": "^4.16.5",
