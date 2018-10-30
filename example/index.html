@@ -6,13 +6,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Simple Donut Example</title>
+    <style>
+        div.donut {
+            height: 20vh;
+            width:  20vh;
+            margin-bottom: 5vh;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="donut_parent" style="height: 15vh; width: 15vh;"></div>
+    <div id="donut1" class="donut"></div>
+    <div id="donut2" class="donut"></div>
 
     <script src="../dist/simple_donuts.min.js"></script>
-    <script src="./donuts.js"></script>
+    <script>
+        const { Donut } = window.SimpleDonuts
+
+        const donut1 = new Donut({ 
+            entries: [
+                {
+                    color: 'red',
+                    value: 0.25,
+                },
+                {
+                    color: 'blue',
+                    value: 0.25,
+                },
+                {
+                    color: 'black',
+                    value: 0.25,
+                },
+                {
+                    color: 'green',
+                    value: 0.1,
+                },
+                {
+                    color: 'orange',
+                    value: 0.15,
+                }
+            ]
+        })
+        document.getElementById('donut1').appendChild(donut1.getSVGElement())
+
+
+        const donut2 = new Donut({ 
+            entries: [
+                {
+                    color: 'red',
+                    value: 0.25,
+                },
+                {
+                    color: 'blue',
+                    value: 0.25,
+                },
+                {
+                    color: 'black',
+                    value: 0.25,
+                },
+                {
+                    color: 'green',
+                    value: 0.1,
+                },
+                {
+                    color: 'orange',
+                    value: 0.15,
+                }
+            ], 
+            thickness: 12, 
+            spacing: 0.005 
+        })
+
+        document.getElementById('donut2').appendChild(donut2.getSVGElement())
+
+    </script>
 </body>
 
 </html>
