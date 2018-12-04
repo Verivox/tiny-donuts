@@ -23,7 +23,7 @@ export class Donut {
         spacing = 0.005,
     }: IDonutOptions) {
 
-        this.spacing = spacing
+        this.spacing = thickness === 'pie' ? 0 : spacing
         this.entries = entries
         this.thickness = thickness === 'pie' ? this.size / 2 : thickness
     }
