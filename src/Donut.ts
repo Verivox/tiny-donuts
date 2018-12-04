@@ -1,4 +1,4 @@
-import { IDonutSegmentParameter, Segment } from './Segment'
+import { Segment } from './Segment'
 
 export interface IDonutOptions {
     entries: IValue[]
