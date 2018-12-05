@@ -6,7 +6,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack",
-    "lint": "tslint -p tsconfig.json"
+    "lint": "tslint -p tsconfig.json",
+    "test": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha -r ts-node/register tests/*.spec.ts",
+    "test:watch": "TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha -r ts-node/register --watch-extensions ts -w tests/*.spec.*"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,10 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "@types/jsdom": "^12.2.0",
+    "@types/mocha": "^5.2.5",
+    "jsdom": "^13.0.0",
+    "mocha": "^5.2.0",
     "ts-loader": "^5.3.1",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",

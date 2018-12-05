@@ -4,6 +4,7 @@ export interface IDonutSegmentParameter {
     size: number;
     start: number;
     thickness: number;
+    _document?: Document;
 }
 export declare class Segment {
     color: string;
@@ -12,6 +13,7 @@ export declare class Segment {
     start: number;
     thickness: number;
     backgroundColor: string;
-    constructor({ color, length, size, start, thickness }: IDonutSegmentParameter);
+    private document;
+    constructor({ color, length, size, start, thickness, _document }: IDonutSegmentParameter);
     getSVGElement(): SVGCircleElement;
 }
