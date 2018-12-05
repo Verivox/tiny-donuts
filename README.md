@@ -2,6 +2,8 @@
 
 A Small Library for creating donut charts.
 
+## Motivation
+We needed Donut charts; however, Chart.js was a much too powerful (and big) for our use case.
 
 ## Very small
 The Library has a minified Size of 4.144 KiB.
@@ -45,3 +47,6 @@ document.getElmentById('parent_element').appendChild(svgElement)
 ```
 
 ![Chart Example](./example/example.png)
+
+## Licence
+[Licensed](./LICENSE) under MIT by the Verivox GmbH
