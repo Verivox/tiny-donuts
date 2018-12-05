@@ -1,6 +1,6 @@
 {
   "name": "@verivox/tiny-donuts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A tiny donut chart library",
   "main": "dist/tiny_donuts.min.js",
   "types": "dist/index.d.ts",
