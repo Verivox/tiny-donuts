@@ -16,8 +16,11 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: ensure reports directory
+          command: mkdir ~/reports
+      - run:
           name: test
-          command: ./node_modules/.bin/mocha test --reporter mocha-junit-reporter -r ts-node/register tests/*.spec.ts
+          command: ./node_modules/.bin/mocha --reporter mocha-junit-reporter -r ts-node/register tests/*.spec.ts
           environment:
             MOCHA_FILE: ~/reports/test-results.xml
             TS_NODE_COMPILER_OPTIONS: '{"module":"commonjs"}'
