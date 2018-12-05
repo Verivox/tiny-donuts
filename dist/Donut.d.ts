@@ -2,6 +2,7 @@ export interface IDonutOptions {
     entries: IValue[];
     spacing?: number;
     thickness?: number | 'pie';
+    _document?: Document;
 }
 export interface IValue {
     color: string;
@@ -12,7 +13,8 @@ export declare class Donut {
     private thickness;
     private spacing;
     private size;
-    constructor({ entries, thickness, spacing, }: IDonutOptions);
+    private document;
+    constructor({ entries, thickness, spacing, _document, }: IDonutOptions);
     getSVGElement(): SVGSVGElement;
     private constructSegments;
     private correctSegmentsForSpacing;
