@@ -5,13 +5,6 @@ export interface IDonutSegmentParameter {
     start: number;
     thickness: number;
 }
-export interface ISegmentParameter {
-    radius: number;
-    circumference: number;
-    thickness: number;
-    offsetInPercent: number;
-    size: number;
-}
 export declare class Segment {
     color: string;
     length: number;

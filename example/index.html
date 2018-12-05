@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Simple Donut Example</title>
+    <title>Tiny Donut Example</title>
     <style>
         div.donut {
             height: 20vh;
@@ -19,9 +19,9 @@
     <div id="donut1" class="donut"></div>
     <div id="donut2" class="donut"></div>
 
-    <script src="../dist/simple_donuts.min.js"></script>
+    <script src="../dist/tiny_donuts.min.js"></script>
     <script>
-        const { Donut } = window.SimpleDonuts
+        const { Donut } = window.TinyDonuts
 
         const donut1 = new Donut({ 
             entries: [
@@ -67,10 +67,6 @@
                 {
                     color: 'green',
                     value: 0.1,
-                },
-                {
-                    color: 'orange',
-                    value: 0.15,
                 }
             ], 
             thickness: 12, 
