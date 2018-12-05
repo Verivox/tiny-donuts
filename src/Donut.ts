@@ -4,6 +4,7 @@ export interface IDonutOptions {
     entries: IValue[]
     spacing?: number
     thickness?: number | 'pie'
+    _document?: Document
 }
 
 export interface IValue {
@@ -16,13 +17,20 @@ export class Donut {
     private thickness: number
     private spacing: number
     private size = 100
+    private document: Document
 
     constructor({
         entries,
         thickness = 3,
         spacing = 0.005,
+        _document = document,
     }: IDonutOptions) {
 
+        if (entries.map(i => i.value).reduce((prev, curr) => prev + curr, 0) > 1) {
+            throw new Error('The sum of entries can not be greater than 1')
+        }
+
+        this.document = _document
         this.spacing = thickness === 'pie' ? 0 : spacing
         this.entries = entries
         this.thickness = thickness === 'pie' ? this.size / 2 : thickness
@@ -30,7 +38,7 @@ export class Donut {
 
     public getSVGElement() {
         const segments = this.constructSegments()
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+        const svg = this.document.createElementNS('http://www.w3.org/2000/svg', 'svg')
         svg.setAttributeNS('', 'viewBox', `0 0 ${this.size} ${this.size}`)
 
         segments.forEach(segment => svg.appendChild(segment.getSVGElement()))
@@ -43,6 +51,7 @@ export class Donut {
         const segments = []
         for (const entry of segmentsWithSpacing) {
             segments.push(new Segment({
+                _document: this.document,
                 color: entry.color,
                 length: entry.value,
                 size: this.size,

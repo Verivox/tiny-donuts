@@ -4,6 +4,7 @@ export interface IDonutSegmentParameter {
     size: number
     start: number
     thickness: number
+    _document?: Document
 }
 
 export class Segment {
@@ -13,9 +14,10 @@ export class Segment {
     public start: number
     public thickness: number
     public backgroundColor = 'transparent'
+    private document: Document
 
-    constructor({ color, length, size, start, thickness }: IDonutSegmentParameter) {
-        if (length > 1 || length < 0) {
+    constructor({ color, length, size, start, thickness, _document = document }: IDonutSegmentParameter) {
+        if (length > 1 || length <= 0) {
             throw Error('Please choose a value between 0 and 1')
         }
 
@@ -24,6 +26,7 @@ export class Segment {
         this.size = size
         this.thickness = thickness
         this.start = start
+        this.document = _document
     }
 
     public getSVGElement() {
@@ -33,7 +36,7 @@ export class Segment {
         const offset = circumference - (base * (this.start * 100)) + (circumference / 4)
         const lengthOnCircle = base * (this.length * 100)
 
-        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+        const circle = this.document.createElementNS('http://www.w3.org/2000/svg', 'circle')
         circle.setAttributeNS('', 'r', radius.toString())
         circle.setAttributeNS('', 'fill', this.backgroundColor)
         circle.setAttributeNS('', 'cx', `${this.size / 2}`)
