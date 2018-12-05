@@ -1,5 +1,10 @@
 # Tiny Donuts
 
+[![CircleCI branch](https://img.shields.io/circleci/project/github/Verivox/tiny-donuts/master.svg?style=flat-square)](https://circleci.com/gh/Verivox/tiny-donuts)
+[![NpmLicense](https://img.shields.io/npm/l/@verivox/tiny-donuts.svg?style=flat-square)](https://www.npmjs.com/package/@verivox/tiny-donuts)
+[![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/@verivox/tiny-donuts.svg?style=flat-square)](https://www.npmjs.com/package/@verivox/tiny-donuts)
+[![npm (scoped)](https://img.shields.io/npm/v/@verivox/tiny-donuts.svg?style=flat-square)](https://www.npmjs.com/package/@verivox/tiny-donuts)
+
 A tiny, dependency-less library for creating SVG donut charts.
 
 
