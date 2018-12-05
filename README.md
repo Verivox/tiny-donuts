@@ -15,7 +15,7 @@ So we wrote this small library with a minified size of 4 KiB.
 Install the package as a dependency: `npm install @verivox/tiny-donuts`
 
 ```js
-const { Donut } = window.SimpleDonuts
+const { Donut } = window.TinyDonuts
 
 const donut = new Donut({ 
        entries: [
