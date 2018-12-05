@@ -1,8 +1,8 @@
 {
-  "name": "simple-donuts",
+  "name": "tiny-donuts",
   "version": "1.0.0",
-  "description": "A Simple Donut Chart Library",
-  "main": "dist/simple_donuts.min.js",
+  "description": "A tiny donut chart library",
+  "main": "dist/tiny_donuts.min.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.kumbier.it:verivox/SimpleDonuts.git"
+    "url": "git@github.com:verivox/tiny-donuts.git"
   },
   "keywords": [
     "Chart",
@@ -20,9 +20,14 @@
     "Donut",
     "Donuts",
     "svg",
-    "small"
+    "small",
+    "tiny",
+    "typescript"
   ],
-  "author": "Kim Almasan",
+  "author": "Kim Almasan <kim.almasan@kumbier.it> (https://kumbier.it)",
+  "contributors": [
+    "Lars Kumbier <lars@kumbier.it> (https://kumbier.it)"
+  ],
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

@@ -1,7 +1,7 @@
 import { Donut } from './Donut'
 
 if (window) {
-    (window as any).SimpleDonuts = {
+    (window as any).TinyDonuts = {
         Donut,
     }
 }

@@ -16,7 +16,7 @@ module.exports = {
     extensions: [ '.ts' ]
   },
   output: {
-    filename: 'simple_donuts.min.js',
+    filename: 'tiny_donuts.min.js',
     path: path.resolve(__dirname, 'dist')
   }
 }
