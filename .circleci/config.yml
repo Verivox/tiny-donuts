@@ -24,7 +24,7 @@ jobs:
           when: always
       - run:
           name: lint
-          command: ./node_modules/.bin/tslint -p tsconfig.json --format junit --output-file ~/reports/tslint.xml
+          command: ./node_modules/.bin/tslint -p tsconfig.json --format junit --out ~/reports/tslint.xml
           when: always
       - store_artifacts:
           path: ~/reports/test-results.xml
