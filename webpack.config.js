@@ -18,6 +18,8 @@ module.exports = {
   output: {
     filename: 'tiny_donuts.min.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'TinyDonuts'
+    library: 'TinyDonuts',
+    libraryTarget: 'umd',
+    globalObject: 'this'
   }
 }
