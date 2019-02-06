@@ -8,7 +8,7 @@ module.exports = {
       {
         test: /\.ts$/,
         use: 'ts-loader',
-        exclude: /node_modules/
+        exclude: /node_modules|tests/
       }
     ]
   },
@@ -17,6 +17,7 @@ module.exports = {
   },
   output: {
     filename: 'tiny_donuts.min.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    library: 'TinyDonuts'
   }
 }
