@@ -1,6 +1,6 @@
 {
   "name": "@verivox/tiny-donuts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A tiny donut chart library",
   "main": "dist/tiny_donuts.min.js",
   "types": "dist/index.d.ts",
@@ -32,18 +32,18 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/jsdom": "^12.2.1",
-    "@types/mocha": "^5.2.5",
-    "@types/parse5": "^5.0.0",
-    "jsdom": "^13.2.0",
-    "mocha": "^5.2.0",
-    "mocha-junit-reporter": "^1.18.0",
-    "parse5": "^5.1.0",
-    "ts-loader": "^5.3.3",
-    "ts-node": "^8.0.2",
-    "tslint": "^5.12.1",
-    "typescript": "^3.3.1",
-    "webpack": "^4.29.1",
-    "webpack-cli": "^3.2.3"
+    "@types/jsdom": "^12.2.4",
+    "@types/mocha": "^5.2.7",
+    "@types/parse5": "^5.0.2",
+    "jsdom": "^15.2.1",
+    "mocha": "^6.2.2",
+    "mocha-junit-reporter": "^1.23.1",
+    "parse5": "^5.1.1",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
